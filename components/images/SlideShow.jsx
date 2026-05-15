@@ -5,19 +5,19 @@ import classes from "./SlideShow.module.css";
 
 export default function ImageSlideshow({ images, title }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const rotateImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex < images.length - 1 ? prevIndex + 1 : 0,
+    );
+  };
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex < images.length - 1 ? prevIndex + 1 : 0,
-      );
-    }, 5000);
-
+    const interval = setInterval(() => {}, 5000);
+    rotateImage();
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={classes.slideshow}>
+    <div className={classes.slideshow} onClick={() => rotateImage()}>
       {currentImageIndex}
       {images.map((image, index) => (
         <img

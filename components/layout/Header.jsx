@@ -1,3 +1,5 @@
+"use client";
+import { useFavorites } from "@/context/FavoritesProvider";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -6,6 +8,7 @@ import logo from "@/assets/icon.png";
 import NavLink from "./NavLink";
 
 export default function Header() {
+  const { state } = useFavorites();
   return (
     <header className={styles.header}>
       <Link href="/" className={styles.logo}>
@@ -18,7 +21,9 @@ export default function Header() {
             <NavLink href="/movies">Movies</NavLink>
           </li>
           <li>
-            {/* <NavLink href="/community">Foodies Community</NavLink> */}
+            <NavLink href="/favorites">
+              Favorites {!!state.counter && <span>{state.counter}</span>}
+            </NavLink>
           </li>
         </ul>
       </nav>

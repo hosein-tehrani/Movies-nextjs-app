@@ -1,47 +1,26 @@
-import {
-  Badge,
-  Card,
-  CardBody,
-  CardImg,
-  CardLink,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-} from "react-bootstrap";
+import MovieCard from "@/components/movie/MovieCard";
 import styles from "./page.module.css";
 import api from "@/configs/api";
+import PaginationTemp from "@/components/templates/Pagination";
 
 export default async function Home() {
-  const movies = await api.get("/movies?page=1").then((res) => res.data.data);
-
+  const response = await api.get("/movies?page=1").then((res) => res.data);
+  const { data, metadata } = response;
+  console.log(data, metadata);
+  const selectPage = (data) => {
+    console.log("selectPage: ", data);
+  };
   return (
     <div className={styles.page}>
       <ul className="movies-list">
-        {movies.map((movie) => (
-          <li>
-            <Card key={movie.id}>
-              <CardBody>
-                <CardTitle>{movie.title}</CardTitle>
-                <CardSubtitle className="mb-2 text-muted">
-                  {movie.year}
-                </CardSubtitle>
-                <CardImg variant="top" src={movie.poster}></CardImg>
-                {movie.genres.map((g, index) => (
-                  <>
-                    <Badge key={index} pill variant="secondary">
-                      {g}
-                    </Badge>
-                  </>
-                ))}
-                <hr />
-                <CardLink href={"/movies/" + movie.id}>details</CardLink>
-                <CardLink href="#">Another Link</CardLink>
-              </CardBody>
-            </Card>
-            ;
+        {data.map((movie, index) => (
+          <li key={movie.id + index}>
+            <MovieCard movie={movie} />
           </li>
         ))}
       </ul>
+      <PaginationTemp {...metadata} />
+      {/* <Pagination {...metadata} selectPage={selectPage} /> */}
     </div>
   );
 }

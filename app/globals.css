@@ -5,13 +5,26 @@
 
 html {
   font-family: "Merriweather", serif;
+  --background: #181817;
+  --foreground: #212121;
+
+  --text-primary: #000;
+  --text-secondary: #292828;
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #ebebeb;
 }
 
 body {
+  background-color: var(--background);
+  color: #e5e5e1;
+}
+.content {
   margin: 0 auto;
   max-width: 1200px;
-  background-color: #181817;
-  color: #e5e5e1;
+  min-height: 80vh;
+  background-color: var(--foreground);
 }
 
 ul {
@@ -25,7 +38,17 @@ ul {
   max-width: 60rem;
   margin: 2rem auto;
 }
-
+.not-found {
+  text-align: center;
+}
+.not-found h1 {
+  font-size: 5rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.not-found p {
+  font-size: 1.5rem;
+}
 #main-header {
   display: flex;
   justify-content: space-between;

@@ -1,0 +1,9 @@
+.card {
+  background-color: var(--foreground);
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 15px 0;
+}

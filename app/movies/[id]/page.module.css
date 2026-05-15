@@ -1,0 +1,25 @@
+.detailPage h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.detailPage p {
+  text-align: center;
+  margin: 20px;
+}
+.imageBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail {
+  text-align: left;
+  max-width: 80%;
+  margin: auto;
+}
+.detail p {
+  text-align: left;
+}
+.detail span {
+  font-weight: bold;
+  font-size: 1.3rem;
+}

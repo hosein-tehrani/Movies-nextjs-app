@@ -18,9 +18,8 @@ export default function ImageSlideshow({ images, title }) {
 
   return (
     <div className={classes.slideshow} onClick={() => rotateImage()}>
-      {currentImageIndex}
       {images.map((image, index) => (
-        <img
+        <Image
           key={index}
           src={image}
           className={index === currentImageIndex ? classes.active : ""}

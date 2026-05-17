@@ -1,4 +1,5 @@
 "use client";
+import { revalidatePath } from "next/cache";
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 const initialState = {
@@ -11,7 +12,7 @@ const reducer = (state, action) => {
     case "ADD_ITEM":
       state.favorites.push(action.payload);
       const counter = state.favorites.length;
-      console.log("ADD_ITEM", state);
+      revalidatePath("/favorites");
       return {
         ...state,
         counter,
@@ -21,7 +22,7 @@ const reducer = (state, action) => {
         (item) => item.id !== action.payload.id,
       );
       const counter2 = newSelected.length;
-      console.log("REMOVE_ITEM", newSelected, counter2);
+      revalidatePath("/favorites");
       return {
         counter: counter2,
         favorites: [...newSelected],

@@ -1,17 +1,16 @@
 import ImageSlideshow from "@/components/images/SlideShow";
 import api from "@/configs/api";
-import { Image } from "react-bootstrap";
 import styles from "./page.module.css";
 import { FaImdb } from "react-icons/fa";
 import { notFound } from "next/navigation";
+import { Image } from "react-bootstrap";
 export default async function movieDetail({ params }) {
+  let details;
   try {
-    
-    const details = await api.get("/movies/" + params.id).then((res) => res.data);
+    details = await api.get("/movies/" + params.id).then((res) => res.data);
     console.log(details);
   } catch (error) {
     notFound();
-    
   }
   if (!details) {
     notFound();
@@ -24,10 +23,9 @@ export default async function movieDetail({ params }) {
         {details.images && details.images.length ? (
           <ImageSlideshow images={details.images} title={details.title} />
         ) : (
-          <Image src={details.poster} alt={details.title} fill />
+          <Image src={details.poster} alt={details.title} />
         )}
       </div>
-
       <div className={styles.detail}>
         <p className={styles.imdb}>
           <FaImdb color="yellow" size={26} /> {details.imdb_rating}

@@ -6,11 +6,9 @@ import {
   CardImg,
   CardLink,
   CardSubtitle,
-  CardText,
   CardTitle,
 } from "react-bootstrap";
 import styles from "./MovieCard.module.css";
-import { BsStar, BsStarFill } from "react-icons/bs";
 import CardStar from "./CardStar";
 export default function MovieCard({ movie }) {
   return (

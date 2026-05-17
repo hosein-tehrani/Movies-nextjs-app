@@ -12,6 +12,11 @@
   justify-content: center;
   position: relative;
 }
+
+.imageBox img {
+  width: auto;
+  height: 70vh;
+}
 .detail {
   text-align: left;
   max-width: 80%;

@@ -3,7 +3,17 @@ import api from "@/configs/api";
 import styles from "./page.module.css";
 import { FaImdb } from "react-icons/fa";
 import { notFound } from "next/navigation";
-import { Image } from "react-bootstrap";
+import Image from "next/image";
+export async function generateMetadata({ params }) {
+  const details = await api.get("/movies/" + params.id).then((res) => res.data);
+  if (!details) {
+    notFound();
+  }
+  return {
+    title: details.title,
+    description: details.plot,
+  };
+}
 export default async function movieDetail({ params }) {
   let details;
   try {
@@ -23,7 +33,13 @@ export default async function movieDetail({ params }) {
         {details.images && details.images.length ? (
           <ImageSlideshow images={details.images} title={details.title} />
         ) : (
-          <Image src={details.poster} alt={details.title} />
+          <Image
+            src={details.poster}
+            alt={details.title}
+            width={500} //ولی تو css از استاتیک در میاریم
+            height={500}
+            quality={100}
+          />
         )}
       </div>
       <div className={styles.detail}>

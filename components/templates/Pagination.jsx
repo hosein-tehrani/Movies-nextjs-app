@@ -12,12 +12,9 @@ export default function PaginationTemp({
 }) {
   //   const router = useRouter();
   const handlePageClick = async (selectedPage) => {
-    console.log(selectedPage);
-
     // selectPage(selectedPage);
     // آپدیت URL با شماره صفحه جدید
     // router.push(`/items?page=${selectedPage}`, undefined, { shallow: true });
-
     // اسکرول به بالای صفحه برای تجربه کاربری بهتر
     // window.scrollTo(0, 0);
   };

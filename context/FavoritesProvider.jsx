@@ -12,7 +12,7 @@ const reducer = (state, action) => {
     case "ADD_ITEM":
       state.favorites.push(action.payload);
       const counter = state.favorites.length;
-      revalidatePath("/favorites");
+      // revalidatePath("/favorites");
       return {
         ...state,
         counter,
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
         (item) => item.id !== action.payload.id,
       );
       const counter2 = newSelected.length;
-      revalidatePath("/favorites");
+      // revalidatePath("/favorites");
       return {
         counter: counter2,
         favorites: [...newSelected],

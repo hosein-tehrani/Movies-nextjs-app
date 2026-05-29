@@ -10,10 +10,7 @@ export const dynamic = "force-dynamic"; // راه دوم: کلا کش نمیکن
 export default async function Home() {
   // unstable_noStore(); // راه سوم: کلا کش نمیکنه
   const { data, metadata } = await getMovies();
-  console.log("data: ", data);
-  console.log("metadata: ", metadata);
   const selectPage = (data) => {
-    console.log("selectPage: ", data);
   };
   return (
     <div className={styles.page}>

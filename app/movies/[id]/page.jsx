@@ -18,7 +18,6 @@ export default async function movieDetail({ params }) {
   let details;
   try {
     details = await api.get("/movies/" + params.id).then((res) => res.data);
-    console.log(details);
   } catch (error) {
     notFound();
   }
